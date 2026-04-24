@@ -72,7 +72,8 @@ CapabilityBoundingSet=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYS_PTRACE CAP_DAC_R
 </code>
 </pre>
 ---------------------------------------------------------------------------------------------------
-
+<pre>
+<code>
 смотрим появились ли изменения: sudo systemctl edit alloy
 Перезапускаем: sudo systemctl restart alloy
 Смотрим пользака (должен быть root): ps -o user,pid,cmd -C alloy
@@ -83,8 +84,11 @@ root       66374 /usr/bin/alloy run --storage.path=/var/lib/alloy/data /etc/allo
 sudo sysctl -w kernel.kptr_restrict=0
 sudo sysctl -w kernel.perf_event_paranoid=-1
 sudo systemctl restart alloy
+</code>
+</pre>
 
 Даём нагрузку на nginx и видим графане:
+
 <img width="1850" height="1015" alt="image" src="https://github.com/user-attachments/assets/66002a26-330e-497e-a1d5-538537ddd235" />
 
 <img width="1850" height="1015" alt="image" src="https://github.com/user-attachments/assets/7b6b5b59-5d8d-478c-82a8-36d5b4de0086" />
