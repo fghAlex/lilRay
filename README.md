@@ -19,6 +19,9 @@ for info: https://grafana.com/docs/pyroscope/latest/configure-client/
 Настройка Alloy:
 sudo nano /etc/alloy/config.alloy
 ----------------------------------------------------------------------------------------------------
+<pre>
+<code>
+  
 discovery.process "all" {
 }
 
@@ -47,12 +50,17 @@ pyroscope.ebpf "nginx" {
   targets    = discovery.relabel.nginx.output
   forward_to = [pyroscope.write.local.receiver]
 }
+</code>
+</pre>
 ----------------------------------------------------------------------------------------------------
 
 
 
 sudo nano /etc/systemd/system/alloy.service.d/override.conf
 ---------------------------------------------------------------------------------------------------
+<pre>
+<code>
+  
 [Service]
 User=root
 Group=root
@@ -60,6 +68,9 @@ LimitMEMLOCK=infinity
 NoNewPrivileges=false
 AmbientCapabilities=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_SYS_RESOURCE
 CapabilityBoundingSet=CAP_SYS_ADMIN CAP_BPF CAP_PERFMON CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_SYS_RESOURCE
+
+</code>
+</pre>
 ---------------------------------------------------------------------------------------------------
 
 смотрим появились ли изменения: sudo systemctl edit alloy
